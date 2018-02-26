@@ -6,6 +6,7 @@ import com.badlogic.gdx.ai.utils.Collision;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.*;
+import com.badlogic.gdx.utils.TimeUtils;
 
 
 public class Player {
@@ -32,6 +33,7 @@ public class Player {
     int state = SPAWN;
     float stateTime = 0;
     int dir = LEFT;
+
     Map map;
     boolean grounded = false;
 
@@ -85,7 +87,7 @@ public class Player {
 
     private void processKeys () {
 
-        if (map.cube.state == Cube.CONTROLLED || state == SPAWN || state == DYING) return;
+        if (map.Player.state == Player.DEAD || state == SPAWN || state == DYING) return;
 
         float x0 = (Gdx.input.getX(0) / (float)Gdx.graphics.getWidth()) * 480;
         float x1 = (Gdx.input.getX(1) / (float)Gdx.graphics.getWidth()) * 480;
@@ -217,16 +219,17 @@ public class Player {
             r[3].set(-1, -1, 0, 0);
         }
 
-        if (map.cube.state == Cube.FIXED) {
+       /* if (map.cube.state == Cube.FIXED) {
             r[4].x = map.cube.bounds.x;
             r[4].y = map.cube.bounds.y;
             r[4].width = map.cube.bounds.width;
             r[4].height = map.cube.bounds.height;
+
         } else
             r[4].set(-1, -1, 0, 0);
     }
 
+*/
 
 
-
-}
+}}

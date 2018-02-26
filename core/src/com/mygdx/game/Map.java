@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.TimeUtils;
 
 public class Map {
 
@@ -27,12 +28,13 @@ public class Map {
     Array<Laser> lasers = new Array<Laser>();
     public EndDoor endDoor;
 
-    Cube cube;
-    int score;
+    //Cube cube;
+    int Time;
 
     public Map () {
         loadBinary();
-        score = 0;
+        Time =0;
+
     }
 
     private void loadBinary () {
@@ -55,8 +57,8 @@ public class Map {
                     activeDispenser = dispenser;
                     Player = new Player(this, activeDispenser.bounds.x, activeDispenser.bounds.y);
                     Player.state = Player.SPAWN;
-                    cube = new Cube(this, activeDispenser.bounds.x, activeDispenser.bounds.y);
-                    cube.state = Cube.DEAD;
+                   // cube = new Cube(this, activeDispenser.bounds.x, activeDispenser.bounds.y);
+                    //cube.state = Cube.DEAD;
                 } else if (match(pix, DISPENSER)) {
                     Dispenser dispenser = new Dispenser(x, pixmap.getHeight() - 1 - y);
                     dispensers.add(dispenser);
@@ -90,30 +92,34 @@ public class Map {
 
     public void update (float deltaTime) {
 
+
         Player.update(deltaTime);
 
         if (Player.state == Player.DEAD) {
             Player = new Player(this, activeDispenser.bounds.x, activeDispenser.bounds.y);
         }
 
-        cube.update(deltaTime);
 
-        if (cube.state == Cube.DEAD) {
-            cube = new Cube(this, Player.bounds.x, Player.bounds.y);
-        }
 
-        for (int i = 0; i < dispensers.size; i++) {
+
+      //  cube.update(deltaTime);
+
+       // if (cube.state == Cube.DEAD) {
+      //      cube = new Cube(this, Player.bounds.x, Player.bounds.y);
+      //  }
+
+            for (int i = 0; i < dispensers.size; i++) {
             if (Player.bounds.overlaps(dispensers.get(i).bounds)) {
                 if(activeDispenser != dispensers.get(i)){
                     activeDispenser = dispensers.get(i);
-                    score += 1;
+
                 }
             }
         }
 
-        if (cube.state == Cube.DEAD){
-            cube = new Cube(this, Player.bounds.x, Player.bounds.y);
-        }
+       // if (cube.state == Cube.DEAD){
+       //     cube = new Cube(this, Player.bounds.x, Player.bounds.y);
+      //  }
 
         for (int i = 0; i < rockets.size; i++) {
             Rocket rocket = rockets.get(i);
@@ -132,7 +138,13 @@ public class Map {
         return tileId == SPIKES;
     }
 
-    public int getScore() {
-        return score;
+    public int getTime() {
+        Time = (int) Timer.StartTimer();
+
+
+
+        return Time;
     }
+
+
 }

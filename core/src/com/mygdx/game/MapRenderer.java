@@ -64,13 +64,13 @@ public class MapRenderer {
     Vector3 lerpTarget = new Vector3();
 
     Stage stage;
-    Label scoreLabel;
-    int currentScore;
+    Label TimeLabel;
+    int currentTime;
 
     public MapRenderer (Map map) {
 
         this.map = map;
-        this.currentScore = map.getScore();
+        this.currentTime = map.getTime();
         this.cam = new OrthographicCamera(24, 16);
         this.cam.position.set(map.Player.pos.x, map.Player.pos.y, 0);
         this.cache = new SpriteCache(this.map.tiles.length * this.map.tiles[0].length, false);
@@ -88,11 +88,11 @@ public class MapRenderer {
 
     private void createLabel(){
 
-        scoreLabel = new Label("Score : 0", skin, "default");
-        scoreLabel.setColor(Color.GREEN);
-        scoreLabel.setPosition(5, Gdx.graphics.getHeight() - scoreLabel.getHeight() - 5);
+        TimeLabel = new Label("Time : 0", skin, "default");
+        TimeLabel.setColor(Color.GREEN);
+        TimeLabel.setPosition(5, Gdx.graphics.getHeight() - TimeLabel.getHeight() - 5);
 
-        stage.addActor(scoreLabel);
+        stage.addActor(TimeLabel);
     }
 
     private void createBlocks () {
@@ -177,11 +177,12 @@ public class MapRenderer {
 
     public void render (float deltaTime) {
 
-        if (map.cube.state != Cube.CONTROLLED){
-            cam.position.lerp(lerpTarget.set(map.Player.pos.x, map.Player.pos.y, 0), 2f * deltaTime);
-        }else{
-            cam.position.lerp(lerpTarget.set(map.cube.pos.x, map.cube.pos.y, 0), 2f * deltaTime);
-        }
+      //  if (map.cube.state != Cube.CONTROLLED){
+      //      cam.position.lerp(lerpTarget.set(map.Player.pos.x, map.Player.pos.y, 0), 2f * deltaTime);
+      //  }else{
+      //      cam.position.lerp(lerpTarget.set(map.cube.pos.x, map.cube.pos.y, 0), 2f * deltaTime);
+      //  }
+        cam.position.lerp(lerpTarget.set(map.Player.pos.x, map.Player.pos.y, 0), 2f * deltaTime);
 
         cam.update();
 
@@ -205,7 +206,7 @@ public class MapRenderer {
         if (map.endDoor != null) batch.draw(endDoor, map.endDoor.bounds.x, map.endDoor.bounds.y, 1, 1);
         renderLasers();
         renderBob();
-        renderCube();
+        //renderCube();
         renderDispensers();
         renderRockets();
         renderMovingSpikes();
@@ -216,9 +217,9 @@ public class MapRenderer {
 
         stage.draw();
 
-        if(currentScore != map.getScore()){
-            scoreLabel.setText("Score: " + map.getScore());
-            currentScore = map.getScore();
+        if(currentTime != map.getTime()){
+            TimeLabel.setText("Time: " + map.getTime());
+            currentTime = map.getTime();
         }
 
     }
@@ -264,7 +265,7 @@ public class MapRenderer {
         batch.draw((TextureRegion) anim.getKeyFrame(map.Player.stateTime, loop), map.Player.pos.x, map.Player.pos.y, 1, 1);
     }
 
-    private void renderCube () {
+   /* private void renderCube () {
 
         if (map.cube.state == Cube.FOLLOW){
             batch.draw(cube, map.cube.pos.x, map.cube.pos.y, 1.5f, 1.5f);
@@ -278,7 +279,7 @@ public class MapRenderer {
         }
 
     }
-
+*/
     private void renderLasers () {
         for (int i = 0; i < map.lasers.size; i++) {
             Laser laser = map.lasers.get(i);

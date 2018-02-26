@@ -11,5 +11,6 @@ public class EndDoor {
         this.bounds.x = x;
         this.bounds.y = y;
         this.bounds.width = this.bounds.height = 1;
+
     }
 }

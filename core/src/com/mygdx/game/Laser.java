@@ -2,6 +2,7 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.TimeUtils;
 
 public class Laser {
 
@@ -77,12 +78,12 @@ public class Laser {
         startPoint.set(pos).add(0.5f, 0.5f);
         cappedEndPoint.set(endPoint).add(0.5f, 0.5f);
 
-        Rectangle cbounds = map.cube.bounds;
+      /*  Rectangle cbounds = map.cube.bounds;*/
         Rectangle bbounds = map.Player.bounds;
 
         boolean kill = false;
 
-        if (angle == -90) {
+       /* if (angle == -90) {
             if (startPoint.x < cbounds.x && endPoint.x > cbounds.x) {
                 if (cbounds.y < startPoint.y && cbounds.y + cbounds.height > startPoint.y) {
                     cappedEndPoint.x = cbounds.x;
@@ -112,41 +113,42 @@ public class Laser {
                 }
             }
         }
+*/
 
-        if (angle == -90) {
-            if (startPoint.x < bbounds.x) {
-                if (bbounds.y < startPoint.y && bbounds.y + bbounds.height > startPoint.y) {
-                    if (cappedEndPoint.x > bbounds.x) kill = true;
+            if (angle == -90) {
+                if (startPoint.x < bbounds.x) {
+                    if (bbounds.y < startPoint.y && bbounds.y + bbounds.height > startPoint.y) {
+                        if (cappedEndPoint.x > bbounds.x) kill = true;
+                    }
                 }
             }
-        }
-        if (angle == 90) {
-            if (startPoint.x > bbounds.x) {
-                if (bbounds.y < startPoint.y && bbounds.y + bbounds.height > startPoint.y) {
-                    if (cappedEndPoint.x < bbounds.x + bbounds.width) kill = true;
+            if (angle == 90) {
+                if (startPoint.x > bbounds.x) {
+                    if (bbounds.y < startPoint.y && bbounds.y + bbounds.height > startPoint.y) {
+                        if (cappedEndPoint.x < bbounds.x + bbounds.width) kill = true;
+                    }
                 }
             }
-        }
 
-        if (angle == 0) {
-            if (pos.y < bbounds.y) {
-                if (bbounds.x < startPoint.x && bbounds.x + bbounds.width > startPoint.x) {
-                    if (cappedEndPoint.y > bbounds.y) kill = true;
+            if (angle == 0) {
+                if (pos.y < bbounds.y) {
+                    if (bbounds.x < startPoint.x && bbounds.x + bbounds.width > startPoint.x) {
+                        if (cappedEndPoint.y > bbounds.y) kill = true;
+                    }
                 }
             }
-        }
 
-        if (angle == 180) {
-            if (pos.y > bbounds.y) {
-                if (bbounds.x < startPoint.x && bbounds.x + bbounds.width > startPoint.x) {
-                    if (cappedEndPoint.y < bbounds.y + bbounds.height) kill = true;
+            if (angle == 180) {
+                if (pos.y > bbounds.y) {
+                    if (bbounds.x < startPoint.x && bbounds.x + bbounds.width > startPoint.x) {
+                        if (cappedEndPoint.y < bbounds.y + bbounds.height) kill = true;
+                    }
                 }
             }
-        }
 
-        if (kill && map.Player.state != Player.DYING) {
-            map.Player.state = Player.DYING;
-            map.Player.stateTime = 0;
+            if (kill && map.Player.state != Player.DYING) {
+                map.Player.state = Player.DYING;
+                map.Player.stateTime = 0;
+            }
         }
-    }
 }
