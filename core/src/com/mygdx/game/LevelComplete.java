@@ -13,6 +13,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
+import java.io.*;
+
 public class LevelComplete extends AbstractScreen {
     private Stage stage;
     private Skin skin;
@@ -32,7 +34,7 @@ public class LevelComplete extends AbstractScreen {
     public void show (){
 
         batch = new SpriteBatch();
-        skin = new Skin(Gdx.files.internal("C:\\Users\\Parduotuves\\IdeaProjects\\2D_PlatV2_3\\core\\assets\\uiskin.json"));
+        skin = new Skin(Gdx.files.internal("core\\assets\\uiskin.json"));
         stage = new Stage();
 
 
@@ -76,6 +78,7 @@ public class LevelComplete extends AbstractScreen {
             @Override
             public void clicked(InputEvent event, float x, float y){
                 game.setScreen(new LevelSelectScreen(game));
+
             }
         });
 
@@ -86,12 +89,51 @@ public class LevelComplete extends AbstractScreen {
             }
         });
 
-        button0.addListener(new ClickListener(){
-            @Override
-            public void clicked(InputEvent event, float x, float y){
-                System.out.println("Userio SCORE: " + Timer.getEndTIme());
-            }
-        });
+        button0.addListener(new ClickListener() {
+                                @Override
+                                public void clicked(InputEvent event, float x, float y) {
+                                    System.out.println("Userio SCORE: " + Timer.getEndTIme());
+
+                                    BufferedWriter bw = null;
+                                    FileWriter fw = null;
+
+                                    try {
+                                        Long rezult = Timer.getEndTIme();
+
+                                        String content = Long.toString(rezult);
+
+
+                                        fw = new FileWriter("core\\assets\\duomenys.txt",true);
+                                        bw = new BufferedWriter(fw);
+                                        bw.write("" + content);
+
+                                        System.out.println("Done");
+
+                                    } catch (IOException e) {
+
+                                        e.printStackTrace();
+
+                                    } finally {
+
+                                        try {
+
+                                            if (bw != null)
+                                                bw.close();
+
+                                            if (fw != null)
+                                                fw.close();
+
+                                        } catch (IOException ex) {
+
+                                            ex.printStackTrace();
+
+                                        }
+
+                                    }
+
+                                }
+                            });
+
 
         stage.addActor(button);
         stage.addActor(button2);

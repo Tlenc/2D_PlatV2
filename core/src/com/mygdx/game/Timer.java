@@ -48,8 +48,5 @@ public class Timer {
         return StopTimer();
     }
 
-    public static void setEndTIme(long endTIme) {
 
-        Timer.endTIme = endTIme;
-    }
 }

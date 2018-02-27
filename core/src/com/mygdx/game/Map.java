@@ -41,7 +41,7 @@ public class Map {
 
         dispensers = new Array<Dispenser>();
 
-        Pixmap pixmap = new Pixmap(Gdx.files.internal("C:\\Users\\Parduotuves\\IdeaProjects\\2D_PlatV2_3\\core\\assets\\levels.png"));
+        Pixmap pixmap = new Pixmap(Gdx.files.internal("core\\assets\\levels.png"));
 
         tiles = new int[pixmap.getWidth()][pixmap.getHeight()];
 

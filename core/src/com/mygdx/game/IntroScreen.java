@@ -16,6 +16,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class IntroScreen extends AbstractScreen {
     private Stage stage;
     private Skin skin;
@@ -37,7 +41,7 @@ public class IntroScreen extends AbstractScreen {
     @Override
     public void show() {
         batch = new SpriteBatch();
-        skin = new Skin(Gdx.files.internal("C:\\Users\\Parduotuves\\IdeaProjects\\2D_PlatV2_3\\core\\assets\\uiskin.json"));
+        skin = new Skin(Gdx.files.internal("core\\assets\\uiskin.json"));
         stage = new Stage();
 
 
@@ -73,6 +77,30 @@ public class IntroScreen extends AbstractScreen {
 
                 game.setScreen(new LevelSelectScreen(game));
                 final String testUser = txtUsername.getText();
+                BufferedWriter bw = null;
+                FileWriter fw = null;
+
+                try {
+                    String content = testUser;
+                    fw = new FileWriter("core\\assets\\duomenys.txt");
+                    bw = new BufferedWriter(fw);
+                    bw.write(content);
+                    System.out.println("Done");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (bw != null)
+                            bw.close();
+                        if (fw != null)
+                            fw.close();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
+
+
                 System.out.println(testUser);
 
             }
