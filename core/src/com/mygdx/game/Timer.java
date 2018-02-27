@@ -9,7 +9,8 @@ import java.sql.Time;
 public class Timer {
     private static long startTime;
     private  static  long defaultTime = System.currentTimeMillis()/1000;
-    private  static  long endTIme = startTime/1000 - defaultTime;
+   // private  static  long endTIme = startTime/1000 - defaultTime;
+    private  static  long endTIme;
 
 
     public Timer() {
@@ -34,14 +35,17 @@ public class Timer {
 
 
 
-    public static void StopTimer(){
+    public static long StopTimer(){
 
         System.out.println("Time elapsed in seconds = " + ((startTime/1000 - defaultTime)));
+        return  (startTime/1000 - defaultTime);
     }
 
     public static long getEndTIme() {
 
-        return endTIme;
+
+
+        return StopTimer();
     }
 
     public static void setEndTIme(long endTIme) {

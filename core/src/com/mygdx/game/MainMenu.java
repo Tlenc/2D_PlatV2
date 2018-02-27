@@ -35,7 +35,8 @@ public class MainMenu extends AbstractScreen {
       //  time += delta;
        // if (time > 1) {
             if (Gdx.input.isKeyPressed(Keys.ANY_KEY) || Gdx.input.justTouched()) {
-                game.setScreen(new LoginScreen(game));
+               // game.setScreen(new LoginScreen(game));
+                game.setScreen(new IntroScreen(game));
             }
         }
    // }
