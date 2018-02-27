@@ -34,7 +34,7 @@ public class Menu extends AbstractScreen {
     @Override
     public void show() {
         batch = new SpriteBatch();
-        skin = new Skin(Gdx.files.internal("C:\\Users\\Ryver\\Desktop\\Plat_2D\\core\\assets\\uiskin.json"));
+        skin = new Skin(Gdx.files.internal("C:\\Users\\Parduotuves\\IdeaProjects\\2D_PlatV2_3\\core\\assets\\uiskin.json"));
         stage = new Stage();
 
         final TextButton button = new TextButton("Sound", skin, "default");

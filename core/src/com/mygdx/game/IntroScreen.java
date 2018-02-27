@@ -34,7 +34,7 @@ public class IntroScreen extends AbstractScreen {
    @Override
    public void show() {
        batch = new SpriteBatch();
-       skin = new Skin(Gdx.files.internal("C:\\Users\\Ryver\\Desktop\\Plat_2D\\core\\assets\\uiskin.json"));
+       skin = new Skin(Gdx.files.internal("C:\\Users\\Parduotuves\\IdeaProjects\\2D_PlatV2_3\\core\\assets\\uiskin.json"));
        stage = new Stage();
 
        final TextButton button = new TextButton("Play", skin, "default");
@@ -56,7 +56,7 @@ public class IntroScreen extends AbstractScreen {
        button.addListener(new ClickListener(){
            @Override
            public void clicked(InputEvent event, float x, float y){
-               game.setScreen(new GameScreen(game));
+               game.setScreen(new LevelSelectScreen(game));
            }
        });
 
@@ -70,7 +70,7 @@ public class IntroScreen extends AbstractScreen {
        button3.addListener(new ClickListener(){
            @Override
            public void clicked(InputEvent event, float x, float y){
-               game.setScreen(new GameScreen(game));
+               Gdx.app.exit();
            }
        });
 

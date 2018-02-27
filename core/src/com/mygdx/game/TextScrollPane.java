@@ -23,7 +23,7 @@ public class TextScrollPane {
         table.setWidth(width);
 
         table.setHeight(height);
-        table.setBackground(new NinePatchDrawable(getNinePatch(("C:\\Users\\Ryver\\Desktop\\Plat_2D\\core\\assets\\ng.9.png"))));
+        table.setBackground(new NinePatchDrawable(getNinePatch(("C:\\Users\\Parduotuves\\IdeaProjects\\2D_PlatV2_3\\core\\assets\\ng.9.png"))));
 
         label = new Label("Bla bla bla bla", new Label.LabelStyle(font, Color.WHITE) );
         label.setWrap(true);

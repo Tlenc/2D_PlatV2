@@ -20,7 +20,7 @@ public class GameOverScreen extends AbstractScreen {
 
     @Override
     public void show () {
-        intro = new TextureRegion(new Texture(Gdx.files.internal("C:\\Users\\Ryver\\Desktop\\Plat_2D\\core\\assets\\gameover.png")), 0, 0, 480, 320);
+        intro = new TextureRegion(new Texture(Gdx.files.internal("C:\\Users\\Parduotuves\\IdeaProjects\\2D_PlatV2_3\\core\\assets\\gameover.png")), 0, 0, 480, 320);
         batch = new SpriteBatch();
         batch.getProjectionMatrix().setToOrtho2D(0, 0, 480, 320);
     }

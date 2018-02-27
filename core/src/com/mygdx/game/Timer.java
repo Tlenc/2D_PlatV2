@@ -38,4 +38,14 @@ public class Timer {
 
         System.out.println("Time elapsed in seconds = " + ((startTime/1000 - defaultTime)));
     }
+
+    public static long getEndTIme() {
+
+        return endTIme;
+    }
+
+    public static void setEndTIme(long endTIme) {
+
+        Timer.endTIme = endTIme;
+    }
 }

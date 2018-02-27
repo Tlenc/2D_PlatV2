@@ -78,7 +78,7 @@ public class MapRenderer {
 
         stage = new Stage(new ScreenViewport());
 
-        skin = new Skin(Gdx.files.internal("C:\\Users\\Ryver\\Desktop\\Plat_2D\\core\\assets\\uiskin.json"));
+        skin = new Skin(Gdx.files.internal("C:\\Users\\Parduotuves\\IdeaProjects\\2D_PlatV2_3\\core\\assets\\uiskin.json"));
 
         createAnimations();
         createBlocks();
@@ -127,9 +127,9 @@ public class MapRenderer {
 
     private void createAnimations () {
 
-        this.tile = new TextureRegion(new Texture(Gdx.files.internal("C:\\Users\\Ryver\\Desktop\\Plat_2D\\core\\assets\\tile.png")), 0, 0, 20, 20);
+        this.tile = new TextureRegion(new Texture(Gdx.files.internal("C:\\Users\\Parduotuves\\IdeaProjects\\2D_PlatV2_3\\core\\assets\\tile.png")), 0, 0, 20, 20);
 
-        Texture bobTexture = new Texture(Gdx.files.internal("C:\\Users\\Ryver\\Desktop\\Plat_2D\\core\\assets\\bob.png"));
+        Texture bobTexture = new Texture(Gdx.files.internal("C:\\Users\\Parduotuves\\IdeaProjects\\2D_PlatV2_3\\core\\assets\\bob.png"));
         TextureRegion[] split = new TextureRegion(bobTexture).split(20, 20)[0];
         TextureRegion[] mirror = new TextureRegion(bobTexture).split(20, 20)[0];
 
