@@ -41,7 +41,7 @@ public class GameScreen extends AbstractScreen {
         }
 
         if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
-            game.setScreen(new MainMenu(game));
+            game.setScreen( MainMenu.getInstance(game));
         }
     }
 

@@ -13,7 +13,7 @@ public class Plat_2D extends Game {
 	
 	@Override
 	public void create () {
-			setScreen(new MainMenu(this));
+			setScreen(MainMenu.getInstance(this));
 	}
 
 

@@ -20,7 +20,8 @@ public class Menu extends AbstractScreen {
     SpriteBatch batch;
     float time = 0;
 
-    public Menu (Game game) {
+
+    public Menu(Game game) {
         super(game);
     }
 
@@ -43,33 +44,44 @@ public class Menu extends AbstractScreen {
 
         button.setWidth(200f);
         button.setHeight(20f);
-        button.setPosition(Gdx.graphics.getWidth() /2 - 100f, Gdx.graphics.getHeight()/2 - 10f);
+        button.setPosition(Gdx.graphics.getWidth() / 2 - 100f, Gdx.graphics.getHeight() / 2 - 10f);
         button2.setWidth(200f);
         button2.setHeight(20f);
-        button2.setPosition(Gdx.graphics.getWidth() /2 - 100, Gdx.graphics.getHeight()/2 - 40);
+        button2.setPosition(Gdx.graphics.getWidth() / 2 - 100, Gdx.graphics.getHeight() / 2 - 40);
         button3.setWidth(200f);
         button3.setHeight(20f);
-        button3.setPosition(Gdx.graphics.getWidth() /2 - 100f, Gdx.graphics.getHeight()/2 - 70f);
+        button3.setPosition(Gdx.graphics.getWidth() / 2 - 100f, Gdx.graphics.getHeight() / 2 - 70f);
 
 
-
-        button.addListener(new ClickListener(){
+        button.addListener(new ClickListener() {
             @Override
-            public void clicked(InputEvent event, float x, float y){
+            public void clicked(InputEvent event, float x, float y) {
                 button.setText("Sound off");
             }
         });
 
-        button2.addListener(new ClickListener(){
+        button2.addListener(new ClickListener() {
             @Override
-            public void clicked(InputEvent event, float x, float y){
-                button2.setText("Music off");
+            public void clicked(InputEvent event, float x, float y) {
+                MainMenu mainMenu = MainMenu.getInstance(game);
+
+                if (mainMenu.getArGroja() == true) {
+                    button2.setText("Music off");
+
+                    mainMenu.setArGroja(false);
+                    return;
+
+                }else {
+                    button2.setText("Music on");
+                    mainMenu.setArGroja(true);
+                    return;
+                }
             }
         });
 
-        button3.addListener(new ClickListener(){
+        button3.addListener(new ClickListener() {
             @Override
-            public void clicked(InputEvent event, float x, float y){
+            public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new IntroScreen(game));
             }
         });
@@ -80,6 +92,7 @@ public class Menu extends AbstractScreen {
 
         Gdx.input.setInputProcessor(stage);
     }
+
     /* @Override
      public void render (float delta) {
          Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

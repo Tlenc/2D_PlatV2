@@ -36,7 +36,7 @@ public class GameOverScreen extends AbstractScreen {
         time += delta;
         if (time > 1) {
             if (Gdx.input.isKeyPressed(Keys.ANY_KEY) || Gdx.input.justTouched()) {
-                game.setScreen(new MainMenu(game));
+                game.setScreen(MainMenu.getInstance(game));
             }
         }
     }
