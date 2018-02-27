@@ -36,8 +36,8 @@ public class GameScreen extends AbstractScreen {
         if (map.Player.bounds.overlaps(map.endDoor.bounds)) {
 
             //pakeistas ekranas i LevelComplete
-            game.setScreen(new GameOverScreen(game));
-           // game.setScreen(new LevelComplete(game));
+      //      game.setScreen(new GameOverScreen(game));
+            game.setScreen(new LevelComplete(game));
         }
 
         if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
